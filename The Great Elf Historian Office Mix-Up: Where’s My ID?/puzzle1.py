@@ -26,6 +26,22 @@ def add_distance(list1: List[str], list2: List[str]) -> int:
         total += abs(int(list1[i]) - int(list2[i]))
     return total
 
+def get_iterations_map(list: List[str]) -> dict:
+    iterations = {}
+    for i in range(len(list)):
+        if list[i] in iterations:
+            iterations[list[i]] += 1
+        else:
+            iterations[list[i]] = 1
+    return iterations
+
+def get_similarity_score(itMap: dict, tofind: List[str]) -> int:
+    score = 0
+    for i in range(len(tofind)):
+        if tofind[i] in itMap:
+            score += int(tofind[i]) * itMap[tofind[i]]
+    return score
+
 def main() -> None:
     file = open("input.txt", "r")
     content = file.read()
@@ -33,6 +49,8 @@ def main() -> None:
     list1 = quick_sort(list1)
     list2 = quick_sort(list2)
     print(add_distance(list1, list2))
+    iterations_map = get_iterations_map(list1)
+    print(get_similarity_score(iterations_map, list2))
 
 if __name__ == "__main__":
     main()
