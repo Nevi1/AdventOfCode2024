@@ -1,6 +1,5 @@
-from typing import List, Tuple
-
-def quick_sort(arr: List[int]) -> List[int]:
+# sort() is for cowards
+def quick_sort(arr: list[int]) -> list[int]:
     if len(arr) <= 1:
         return arr
     pivot = arr[len(arr) // 2]
@@ -9,7 +8,7 @@ def quick_sort(arr: List[int]) -> List[int]:
     right = [x for x in arr if x > pivot]
     return quick_sort(left) + middle + quick_sort(right)
 
-def parse_input(content: str) -> Tuple[List[str], List[str]]:
+def parse_input(content: str) -> tuple[list[str], list[str]]:
     list1 = []
     list2 = []
     for line in content.split("\n"):
@@ -20,13 +19,13 @@ def parse_input(content: str) -> Tuple[List[str], List[str]]:
         list2.append(split[1])
     return list1, list2
 
-def add_distance(list1: List[str], list2: List[str]) -> int:
+def add_distance(list1: list[str], list2: list[str]) -> int:
     total = 0
     for i in range(len(list1)):
         total += abs(int(list1[i]) - int(list2[i]))
     return total
 
-def get_iterations_map(list: List[str]) -> dict:
+def get_iterations_map(list: list[str]) -> dict:
     iterations = {}
     for i in range(len(list)):
         if list[i] in iterations:
@@ -35,7 +34,7 @@ def get_iterations_map(list: List[str]) -> dict:
             iterations[list[i]] = 1
     return iterations
 
-def get_similarity_score(itMap: dict, tofind: List[str]) -> int:
+def get_similarity_score(itMap: dict, tofind: list[str]) -> int:
     score = 0
     for i in range(len(tofind)):
         if tofind[i] in itMap:

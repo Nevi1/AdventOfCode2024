@@ -29,7 +29,7 @@ def content_loop(content : str) -> int:
             total += 1
     return total
 
-def main():
+def main() -> None:
     file = open("input.txt", "r")
     content = file.read()
     print(content_loop(content))
