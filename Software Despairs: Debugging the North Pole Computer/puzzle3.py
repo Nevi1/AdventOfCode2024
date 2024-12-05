@@ -5,7 +5,7 @@ def find_mul(content: str) -> int:
     ignored = False
     found = re.finditer("mul\\(([0-9]{1,3}),([0-9]{1,3})\\)|do\\(\\)|don't\\(\\)", content)
     for match in found:
-        if match.group(0) and match.group(2) and not ignored:
+        if match.group(1) and match.group(2) and not ignored:
             a, b = match.groups()
             total += int(a) * int(b)
         elif match.group(0) == "do()":
